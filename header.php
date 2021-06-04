@@ -14,24 +14,31 @@
 				<a href="index.php">
           <img src="images/artist-network-logo.png" alt="artist network">
         </a>
-        
+
         <?php
-          if ((isset($_SESSION['artistuser_id']))) {
+          if ((isset($_SESSION['artistuser_id'])) && ($_SESSION['role'] == 'A')) {
             echo '<p><a href="index.php">Home</a></p>';
             echo '<p><a href="view_users.php">Artists List</a></p>';
-            echo '<p><a href="artistuser_profile.php">Explore Artists</a></p>';
+            echo '<p><a href="showcase_main.php">Explore Artists</a></p>';
             echo '<p><a href="artistuser_profile_list.php">Artist Profile List</a></p>';
+            echo '<p><a href="add_user_profile.php">Add User Profile</a></p>';
+            echo '<p><a href="change_password.php">Change Password</a></p>';
+            echo '<p><a href="logout.php">Logout</a></p>';
+          }
+          else if ((isset($_SESSION['artistuser_id']))) {
+            echo '<p><a href="index.php">Home</a></p>';
+            echo '<p><a href="showcase_main.php">Explore Artists</a></p>';
             echo '<p><a href="add_user_profile.php">Add User Profile</a></p>';
             echo '<p><a href="change_password.php">Change Password</a></p>';
             echo '<p><a href="logout.php">Logout</a></p>';
           }
           else {
             echo '<p><a href="index.php">Home</a></p>';
-            echo '<p><a href="artistuser_profile.php">Explore Artists</a></p>';
+            echo '<p><a href="showcase_main.php">Explore Artists</a></p>';
             echo '<p><a href="register.php">Register</a></p>';
             echo '<p><a href="login.php">Login</a></p>';
-            echo '<p><a href="forgot_password.php">Forgot Password</a></p>';
+            //echo '<p><a href="forgot_password.php">Forgot Password</a></p>';
           }
         ?>
-      </nav>		
+      </nav>
 		</header>

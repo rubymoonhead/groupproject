@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if (isset($_SESSION['artistuser_id'])) { // session security
-  	include('header.php');
+  	include 'header.php';
 
 		// Check if the form has been submitted:
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -34,7 +34,7 @@
 				$email_address = trim($_POST['email_address']);
 			}
 
-      	if (empty($_POST['website_url'])) {
+      if (empty($_POST['website_url'])) {
 				$problem = true;
 				print '<p class="text--error">Please enter your https:// URL: !</p>';
 			}
@@ -42,7 +42,7 @@
 				$website_url = trim($_POST['website_url']);
 			}
 
-      	if (empty($_POST['street_address'])) {
+      if (empty($_POST['street_address'])) {
 				$problem = true;
 				print '<p class="text--error">Please enter your Street Address!</p>';
 			}
@@ -50,7 +50,7 @@
 				$street_address = trim($_POST['street_address']);
 			}
 
-      	if (empty($_POST['city'])) {
+      if (empty($_POST['city'])) {
 				$problem = true;
 				print '<p class="text--error">Please enter your City!</p>';
 			}
@@ -58,7 +58,7 @@
 				$city = trim($_POST['city']);
 			}
 
-      	if (empty($_POST['state'])) {
+      if (empty($_POST['state'])) {
 				$problem = true;
 				print '<p class="text--error">Please enter your State!</p>';
 			}
@@ -66,7 +66,7 @@
 				$state = trim($_POST['state']);
 			}
 
-      	if (empty($_POST['zip_code'])) {
+      if (empty($_POST['zip_code'])) {
 				$problem = true;
 				print '<p class="text--error">Please enter your ZIP Code!</p>';
 			}
@@ -74,7 +74,7 @@
 				$zip_code = trim($_POST['zip_code']);
 			}
 
-      	if (empty($_POST['phone_number'])) {
+      if (empty($_POST['phone_number'])) {
 				$problem = true;
 				print '<p class="text--error">Please enter your Phone Number!</p>';
 			}
@@ -87,10 +87,10 @@
 				//register the user in the database...
 				require('mysqli_connect.php');
 
-        		$artistuser_id = $_SESSION['artistuser_id'];
+        $artistuser_id = $_SESSION['artistuser_id'];
 
 				// make the query:
-				$q = "INSERT INTO ARTISTPROFILE (first_name, last_name, email_address, website_url, street_address, city, state, zip_code, phone_number) VALUES ('$first_name', '$last_name', '$email_address', '$website_url', '$street_address', '$city', '$state', '$zip_code', '$phone_number')";
+				$q = "INSERT INTO ARTISTPROFILE (first_name, last_name, email_address, website_url, street_address, city, state, zip_code, phone_number, artistuser_id) VALUES ('$first_name', '$last_name', '$email_address', '$website_url', '$street_address', '$city', '$state', '$zip_code', '$phone_number', '$artistuser_id')";
 
 				$r = @mysqli_query($connection,$q); // This will run query
 
@@ -98,7 +98,7 @@
 					//If it ran ok.
 					//Print mess:
 					echo '<h1 class="name"> Thank You!</h1> <p class="name">Your Artist Profile has been added.</p><p><br></p>';
-					header("Location: artistuser_profile_list.php?msg=ok");//needs to change--send to artist profile page
+					header("Location: showcase_single.php?msg=ok");//needs to change--send to artist profile page
 					exit;
 				}
 				else {
@@ -134,13 +134,13 @@
     <h1>Artist Network</h1>
     <h2>Add Artist Profile</h2>
 
-	<!-- Create the form:-->
+<!-- Create the form:-->
 
     <form action="add_user_profile.php" method="post" class="form--inline">
 
     <p>
     <label for="first_name">First Name:</label>
-    <input type="text" name="first_name" size="40" value="<?php if (isset($_POST['first_name'])) { print htmlspecialchars($_POST['first_name']); } ?>">
+    <input type="text" name="first_name" size="38" value="<?php if (isset($_POST['first_name'])) { print htmlspecialchars($_POST['first_name']); } ?>">
     </p>
 
     <p>
@@ -179,3 +179,5 @@
 
     </form>
   </main>
+
+
