@@ -1,2 +1,3 @@
-# groupproject
-COSW30 group project with LM, Artist Network 
+# group project
+
+COSW30 group project with LM, Artist Network
